@@ -7,12 +7,11 @@ namespace Vehicles_API.Controllers
     [ApiController]
     public class VehicleController : Controller
     {
-        [HttpGet]
-        public VehicleRequest get()
-        {
-            return new VehicleRequest();
-        }
-
+        /// <summary>
+        /// Process Vehicle Request for validate his string properties
+        /// </summary>
+        /// <param name="vehicleRequest">VehicleRequest</param>
+        /// <returns>ProcessVehicleResponse</returns>
         [HttpPost]
         [Route("ProcessVehicle")]
         public ProcessVehicleResponse ProcessVehicle(VehicleRequest vehicleRequest)
