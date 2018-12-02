@@ -1,0 +1,14 @@
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\bin\Debug\netcoreapp2.1\Vehicles_API.deps.json
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\bin\Debug\netcoreapp2.1\Vehicles_API.runtimeconfig.json
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\bin\Debug\netcoreapp2.1\Vehicles_API.runtimeconfig.dev.json
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\bin\Debug\netcoreapp2.1\Vehicles_API.dll
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\bin\Debug\netcoreapp2.1\Vehicles_API.pdb
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\obj\Debug\netcoreapp2.1\Vehicles_API.csprojAssemblyReference.cache
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\obj\Debug\netcoreapp2.1\Vehicles_API.csproj.CoreCompileInputs.cache
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\obj\Debug\netcoreapp2.1\Vehicles_API.RazorAssemblyInfo.cache
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\obj\Debug\netcoreapp2.1\Vehicles_API.RazorAssemblyInfo.cs
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\obj\Debug\netcoreapp2.1\Vehicles_API.AssemblyInfoInputs.cache
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\obj\Debug\netcoreapp2.1\Vehicles_API.AssemblyInfo.cs
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\obj\Debug\netcoreapp2.1\Vehicles_API.RazorTargetAssemblyInfo.cache
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\obj\Debug\netcoreapp2.1\Vehicles_API.dll
+C:\Users\ram4v\source\repos\Vehicles_API\Vehicles_API\obj\Debug\netcoreapp2.1\Vehicles_API.pdb
