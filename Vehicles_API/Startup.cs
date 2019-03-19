@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Vehicles_API.Models;
+using VehiclesRepository;
 
 namespace Vehicles_API
 {
@@ -18,6 +19,7 @@ namespace Vehicles_API
         public IConfiguration Configuration { get; }
         private SwaggerConfig swaggerInfo = new SwaggerConfig();
 
+        //TODO Create middleware for the config
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -50,6 +52,9 @@ namespace Vehicles_API
                 };
                 c.SwaggerDoc(swaggerInfo.DocNameV1, info);
             });
+
+            //services config
+            services.AddScoped<IJsonService, JsonService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
