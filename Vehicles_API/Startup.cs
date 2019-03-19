@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Entities.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Services;
 using Swashbuckle.AspNetCore.Swagger;
-using Vehicles_API.Models;
+using Vehicles_API.Config;
 using VehiclesRepository;
 
 namespace Vehicles_API
@@ -24,16 +25,7 @@ namespace Vehicles_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy("SiteCorsPolicy", builder =>
-                {
-                    builder.AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowAnyOrigin()
-                    .AllowCredentials();
-                });
-            });
+            services.ConfigureCorsOrigin();
 
             Configuration.GetSection("SwaggerConfig").Bind(swaggerInfo);
 
@@ -57,6 +49,7 @@ namespace Vehicles_API
             //services config
             services.AddScoped<IJsonRepository, JsonRepository>();
             services.AddScoped<IJsonService, JsonService>();
+            services.AddScoped<ICsvService, CsvService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

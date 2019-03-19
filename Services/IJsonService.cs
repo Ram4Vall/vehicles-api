@@ -9,5 +9,6 @@ namespace Services
     {
         List<VehicleRequest> GetAllVehicles();
         void SaveVehicle(VehicleRequest vehicleRequest);
+        void SaveUpdateVehicle(VehicleRequest vehicleRequest);
     }
 }

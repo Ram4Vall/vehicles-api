@@ -1,7 +1,10 @@
-﻿using Entities.Models;
+﻿using CsvHelper;
+using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace Vehicles_API.Controllers
 {
@@ -10,10 +13,12 @@ namespace Vehicles_API.Controllers
     public class VehicleController : Controller
     {
         private readonly IJsonService JsonService;
+        private readonly ICsvService CsvService;
 
-        public VehicleController(IJsonService jsonService)
+        public VehicleController(IJsonService jsonService, ICsvService csvService)
         {
             JsonService = jsonService;
+            CsvService = csvService;
         }
 
         /// <summary>
@@ -25,7 +30,14 @@ namespace Vehicles_API.Controllers
         [Route("ProcessVehicle")]
         public ProcessVehicleResponse ProcessVehicle(VehicleRequest vehicleRequest)
         {
-            return new ProcessVehicleResponse(vehicleRequest);
+            ProcessVehicleResponse processVehicleResponse = new ProcessVehicleResponse(vehicleRequest);
+
+            if (processVehicleResponse.ResultCode == VehicleValidationResultCode.Valid)
+            {
+                JsonService.SaveUpdateVehicle(vehicleRequest);
+            }
+
+            return processVehicleResponse;
         }
 
 
@@ -39,5 +51,18 @@ namespace Vehicles_API.Controllers
         {
             return JsonService.GetAllVehicles();
         }
+
+        /// <summary>
+        /// Generate CSV file with all validated vehicles
+        /// </summary>
+        /// <returns>export.csv</returns>
+        [HttpGet]
+        [Route("ExportVehicles")]
+        [Produces("text/csv")]
+        public IActionResult DescargaMarcaje()
+        {
+            return File(new MemoryStream(CsvService.GenerateCSVExport()), "text/csv", "export.csv");
+        }
+
     }
 }

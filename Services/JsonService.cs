@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Entities.Models;
 using Newtonsoft.Json;
 using VehiclesRepository;
@@ -22,7 +23,30 @@ namespace Services
 
         public void SaveVehicle(VehicleRequest vehicleRequest)
         {
-            string jsonString = JsonConvert.SerializeObject(vehicleRequest);
+            List<VehicleRequest> currentVehicles = GetAllVehicles();
+
+            currentVehicles.Add(vehicleRequest);
+
+            string jsonString = JsonConvert.SerializeObject(currentVehicles);
+            JsonRepository.WriteFile(jsonString);
+        }
+
+        public void SaveUpdateVehicle(VehicleRequest vehicleRequest)
+        {
+            List<VehicleRequest> currentVehicles = GetAllVehicles();
+            VehicleRequest vehicle = currentVehicles.FirstOrDefault(x => x.VehicleId == vehicleRequest.VehicleId);
+
+            if (vehicle == null)
+            {
+                currentVehicles.Add(vehicleRequest);
+            }
+            else
+            {
+                int index = currentVehicles.FindIndex(x => x.VehicleId == vehicleRequest.VehicleId);
+                currentVehicles[index] = vehicleRequest;
+            }
+
+            string jsonString = JsonConvert.SerializeObject(currentVehicles);
             JsonRepository.WriteFile(jsonString);
         }
     }

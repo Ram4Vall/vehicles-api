@@ -1,8 +1,1 @@
-[
-  {
-    "vehicleId": 0,
-    "type": "string",
-    "manufacturerNameShort": "string",
-    "price": 0
-  }
-]
+[{"VehicleId":0,"Type":"string","ManufacturerNameShort":"string","Price":10.0},{"VehicleId":1,"Type":"string","ManufacturerNameShort":"string","Price":11.0},{"VehicleId":2,"Type":"string","ManufacturerNameShort":"string","Price":14.0},{"VehicleId":5,"Type":"string","ManufacturerNameShort":"string","Price":14.0},{"VehicleId":4,"Type":"string","ManufacturerNameShort":"string","Price":14.0}]
