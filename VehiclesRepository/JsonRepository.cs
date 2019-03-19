@@ -4,18 +4,18 @@ using System.IO;
 
 namespace VehiclesRepository
 {
-    public class JsonService : IJsonService
+    public class JsonRepository : IJsonRepository
     {
         private readonly string FILE_NAME = "vehicles.json";
         private readonly string ROOT = "wwwroot";
         private readonly IHostingEnvironment HostingEnvironment;
 
-        public JsonService(IHostingEnvironment hostingEnvironment)
+        public JsonRepository(IHostingEnvironment hostingEnvironment)
         {
             HostingEnvironment = hostingEnvironment;
         }
 
-        private string ReadFile()
+        public string ReadFile()
         {
             string jsonResult = "";
 
@@ -32,7 +32,7 @@ namespace VehiclesRepository
             return jsonResult;
         }
 
-        private void WriteFile(string jsonData)
+        public void WriteFile(string jsonData)
         {
             var path = Path.Combine(
                 HostingEnvironment.WebRootPath,

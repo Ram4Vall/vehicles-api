@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Services;
 using Swashbuckle.AspNetCore.Swagger;
 using Vehicles_API.Models;
 using VehiclesRepository;
@@ -54,6 +55,7 @@ namespace Vehicles_API
             });
 
             //services config
+            services.AddScoped<IJsonRepository, JsonRepository>();
             services.AddScoped<IJsonService, JsonService>();
         }
 
