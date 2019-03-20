@@ -1,10 +1,9 @@
-﻿using CsvHelper;
-using Entities.Models;
+﻿using Entities.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Vehicles_API.Controllers
 {
@@ -14,11 +13,13 @@ namespace Vehicles_API.Controllers
     {
         private readonly IJsonService JsonService;
         private readonly ICsvService CsvService;
+        private readonly IValidationService ValidationService;
 
-        public VehicleController(IJsonService jsonService, ICsvService csvService)
+        public VehicleController(IJsonService jsonService, ICsvService csvService, IValidationService validationService)
         {
             JsonService = jsonService;
             CsvService = csvService;
+            ValidationService = validationService;
         }
 
         /// <summary>
@@ -30,7 +31,7 @@ namespace Vehicles_API.Controllers
         [Route("ProcessVehicle")]
         public ProcessVehicleResponse ProcessVehicle(VehicleRequest vehicleRequest)
         {
-            ProcessVehicleResponse processVehicleResponse = new ProcessVehicleResponse(vehicleRequest);
+            ProcessVehicleResponse processVehicleResponse = ValidationService.GetProcessVehicleResponse(vehicleRequest);
 
             if (processVehicleResponse.ResultCode == VehicleValidationResultCode.Valid)
             {
@@ -38,6 +39,17 @@ namespace Vehicles_API.Controllers
             }
 
             return processVehicleResponse;
+        }
+
+        /// <summary>
+        /// Process csv file to import all valid vehicles 
+        /// </summary>
+        /// <param name="Documento">Documento</param>
+        [HttpPost]
+        [Route("ImportVehicles")]
+        public void ImportVehicles(IFormFile CsvFile)
+        {
+            JsonService.SaveList(CsvService.ImportCsvVehicles(CsvFile));
         }
 
 

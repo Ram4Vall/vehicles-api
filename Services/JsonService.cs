@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Entities.Models;
 using Newtonsoft.Json;
@@ -10,10 +9,12 @@ namespace Services
     public class JsonService : IJsonService
     {
         private readonly IJsonRepository JsonRepository;
+        private readonly IValidationService ValidationService;
 
-        public JsonService(IJsonRepository jsonRepository)
+        public JsonService(IJsonRepository jsonRepository, IValidationService validationService)
         {
             JsonRepository = jsonRepository;
+            ValidationService = validationService;
         }
 
         public List<VehicleRequest> GetAllVehicles()
@@ -49,5 +50,14 @@ namespace Services
             string jsonString = JsonConvert.SerializeObject(currentVehicles);
             JsonRepository.WriteFile(jsonString);
         }
+
+        public void SaveList(List<VehicleRequest> vehicles)
+        {
+            foreach (VehicleRequest vehicle in vehicles)
+            {
+                SaveVehicle(vehicle);
+            }
+        }
+
     }
 }

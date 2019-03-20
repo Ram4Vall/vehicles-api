@@ -5,44 +5,15 @@
         public int VehicleId { get; set; }
         public VehicleValidationResultCode ResultCode { get; set; }
 
-        public ProcessVehicleResponse(VehicleRequest vehicleRequest)
+        public ProcessVehicleResponse(int vehicleId, VehicleValidationResultCode vehicleValidationResultCode)
         {
-            this.VehicleId = vehicleRequest.VehicleId;
-            this.ResultCode = GetCodeResult(vehicleRequest);
+            VehicleId = vehicleId;
+            ResultCode = vehicleValidationResultCode;
         }
 
-        /// <summary>
-        /// Obtain VehicleValidationResultCode from validation of string properties
-        /// </summary>
-        /// <param name="vehicleRequest">VehicleRequest</param>
-        /// <returns>VehicleValidationResultCode</returns>
-        private VehicleValidationResultCode GetCodeResult(VehicleRequest vehicleRequest)
+        public ProcessVehicleResponse()
         {
-            VehicleValidationResultCode codeResult;
-            bool validateProperties = true;
 
-            if ((vehicleRequest.Type == null || vehicleRequest.Type.Length == 0) 
-                || (vehicleRequest.ManufacturerNameShort == null 
-                    || vehicleRequest.ManufacturerNameShort.Length == 0))
-            {
-                validateProperties = false;
-            }
-
-            switch (validateProperties)
-            {
-                case true:
-                    codeResult = VehicleValidationResultCode.Valid;
-                break;
-
-                case false:
-                    codeResult = VehicleValidationResultCode.Invalid;
-                break;
-
-                default:
-                    codeResult = VehicleValidationResultCode.NotSpecified;
-                break;
-            }
-            return codeResult;
         }
     }
 }

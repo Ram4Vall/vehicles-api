@@ -1,7 +1,5 @@
 ﻿using Entities.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Services
 {
@@ -10,5 +8,6 @@ namespace Services
         List<VehicleRequest> GetAllVehicles();
         void SaveVehicle(VehicleRequest vehicleRequest);
         void SaveUpdateVehicle(VehicleRequest vehicleRequest);
+        void SaveList(List<VehicleRequest> vehicles);
     }
 }

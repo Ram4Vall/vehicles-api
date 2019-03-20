@@ -50,6 +50,7 @@ namespace Vehicles_API
             services.AddScoped<IJsonRepository, JsonRepository>();
             services.AddScoped<IJsonService, JsonService>();
             services.AddScoped<ICsvService, CsvService>();
+            services.AddScoped<IValidationService, ValidationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
