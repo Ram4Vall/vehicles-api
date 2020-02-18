@@ -1,11 +1,8 @@
-﻿using Entities.Models;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Swashbuckle.AspNetCore.Swagger;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Vehicles_API.Config
+namespace Vehicles.API.Extension
 {
-    public static class ServiceExtensions
+    public static class CorsExtension
     {
         public static void ConfigureCorsOrigin(this IServiceCollection services)
         {
@@ -15,8 +12,7 @@ namespace Vehicles_API.Config
                 {
                     builder.AllowAnyHeader()
                     .AllowAnyMethod()
-                    .AllowAnyOrigin()
-                    .AllowCredentials();
+                    .AllowAnyOrigin();
                 });
             });
         }

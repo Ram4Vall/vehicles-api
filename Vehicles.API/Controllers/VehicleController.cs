@@ -5,7 +5,7 @@ using Services;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Vehicles_API.Controllers
+namespace Vehicles.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
